@@ -2,7 +2,7 @@
 
 export default {
   name: 'ProjectCard',
-  props: ['project'],
+  props: ['project', 'url'],
   data() {
     return {
 
@@ -15,15 +15,25 @@ export default {
 <template>
   <div class="col">
     <div class="card">
-      <img :src="project.preview" alt="" class="card-img-top">
+      <img :src="project.cover_image" alt="" class="card-img-top">
       <div class="card-body">
-        <img src="'url + '/storage/' + project.cover_image"  alt="">
+        
         <h5 class="card-title">
+            Title:
           {{ project.title }}
         </h5>
         <p class="card-text">
-          <strong>Description</strong> <br>
+
+          <strong>Description:</strong> <br>
+          {{ project.github_link }}<br>
+          {{ project.internet_link }}
+
+        </p>
+        <p class="card-text">
+
+          <strong>Description:</strong> <br>
           {{ project.description }}
+
         </p>
       </div>
     </div>

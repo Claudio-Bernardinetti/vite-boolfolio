@@ -9,7 +9,8 @@ export default {
   },
   data() {
     return {
-      url: 'http://127.0.0.1:8000/api/projects',
+      url: 'http://127.0.0.1:8000', 
+      api: '/api/projects', 
       projects: [],
       current_page: 1,
       last_page: 0,
@@ -21,7 +22,7 @@ export default {
       this.fetchProjects();
     },
     fetchProjects() {
-      axios.get(this.url, { params: { page: this.current_page } })
+      axios.get(this.url + this.api, { params: { page: this.current_page } })
         .then(response => {
           this.projects = response.data.result.data;
           this.last_page = response.data.result.last_page;
