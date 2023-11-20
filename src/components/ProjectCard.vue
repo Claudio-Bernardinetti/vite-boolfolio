@@ -4,7 +4,7 @@
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 py-4 g-2">
       <div class="col" v-for="project in projects" :key="project.id">
         <div class="card">
-          <img :src="url + '/storage_img/' + project.cover_image" alt="">
+          <img :src="project.cover_image" alt="">
           <div class="card-body">
             <h5 class="card-title">Title: {{ project.title }}</h5>
             <p class="card-text">
@@ -17,6 +17,10 @@
               {{ project.description }}
             </p>
           </div>
+          <div class="card-footer">
+            <router-link :to="{ name: 'project', params: { id: project.id }}">View Project</router-link>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -42,9 +46,8 @@ export default {
     return {
       url: 'http://127.0.0.1:8000', 
       api: '/api/projects', 
-      projects: [],
-      current_page: 1,
-      last_page: 0,
+      projects: null,
+      
     }
   },
   methods: {

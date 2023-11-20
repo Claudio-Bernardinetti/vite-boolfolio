@@ -97,7 +97,7 @@ export default {
     }
   },
   methods: {
-    getPosts() {
+    getProjects() {
       const url = this.base_url + this.blog_api;
       axios
         .get(url)

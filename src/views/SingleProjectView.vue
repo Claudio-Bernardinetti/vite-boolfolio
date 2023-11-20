@@ -3,7 +3,7 @@
 
   <div class="container">
       <div class="cover_image">
-        <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + post.cover_image" alt="" style="height: 400px;">
+        <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + project.cover_image" alt="" style="height: 400px;">
       </div>
       <h1>{{ project.title }}</h1>
       <p>{{project.description}}</p>
