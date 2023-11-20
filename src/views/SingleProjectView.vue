@@ -1,15 +1,35 @@
 <template>
-  <div>
+
 
   <div class="container">
       <div class="cover_image">
-        <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + project.cover_image" alt="" style="height: 400px;">
+        <!-- <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + project.cover_image" alt="" style="height: 400px;"> -->
       </div>
-      <h1>{{ project.title }}</h1>
-      <p>{{project.description}}</p>
-    </div>
-
+      
+        <div class="card d-flex">
+          
+          <img width="300" :src="project.cover_image" alt="">
+          
+          <div class="card-body">
+            <h5 class="card-title">Title: {{ project.title }}</h5>
+            <p class="card-text">
+              <strong>Links:</strong> <br>
+              {{ project.github_link }}<br>
+              {{ project.internet_link }}
+            </p>
+            <p class="card-text">
+              <strong>Description:</strong> <br>
+              {{ project.description }}
+            </p>
+          </div>
+          <!-- <div class="card-footer">
+            <router-link :to="{ name: 'project', params: { id: project.id }}">View Project</router-link>
+          </div> -->
+      </div>
   </div>
+      
+
+
 </template>
 
 <script>
