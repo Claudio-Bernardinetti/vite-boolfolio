@@ -22,10 +22,8 @@
               {{ project.description }}
             </p>
           </div>
-          <!-- <div class="card-footer">
-            <router-link :to="{ name: 'project', params: { id: project.id }}">View Project</router-link>
-          </div> -->
       </div>
+          <router-link to="/projects" class="btn btn-primary my-2">Go Back</router-link>
   </div>
       
 

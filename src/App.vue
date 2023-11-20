@@ -50,7 +50,7 @@ export default {
 
   </header>
 
-  <main class="py-4">
+  <main class="">
 
     <router-view></router-view>
 

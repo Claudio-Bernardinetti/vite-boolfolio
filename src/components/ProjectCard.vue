@@ -16,24 +16,34 @@
               <strong>Description:</strong> <br>
               {{ project.description }}
             </p>
+            <div class="card-footer">
+              <router-link class="btn btn-success my-2" :to="{ name: 'project', params: { id: project.id }}">View Project</router-link>
+            </div>
           </div>
-          <div class="card-footer">
-            <router-link :to="{ name: 'project', params: { id: project.id }}">View Project</router-link>
-          </div>
-          
         </div>
       </div>
     </div>
-    <nav aria-label="Page navigation example py-2">
-      <!-- <ul class="pagination">
-        <li class="page-item">
-          <button @click="updatePage(-1)" class="btn btn-primary" :disabled="current_page === 1">Prev</button>
-        </li>
-        <li class="page-item">
-          <button @click="updatePage(1)" class="btn btn-primary" :disabled="current_page === last_page">Next</button>
-        </li>
-      </ul> -->
-    </nav>
+    <div class="container">
+      <div class="pagination my-3">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item" v-if="currentPage > 1">
+              <a class="page-link" href="#" @click.prevent="currentPage--; fetchProjects();" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
+              <a class="page-link" href="#" @click.prevent="currentPage = page; fetchProjects();">{{ page }}</a>
+            </li>
+            <li class="page-item" v-if="currentPage < totalPages">
+              <a class="page-link" href="#" @click.prevent="currentPage++; fetchProjects();" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,27 +54,28 @@ export default {
   name: 'Projects',
   data() {
     return {
-      url: 'http://127.0.0.1:8000', 
-      api: '/api/projects', 
-      projects: null,
-      
+      url: 'http://127.0.0.1:8000',
+      api: '/api/projects',
+      projects: [],
+      currentPage: 1,
+      totalPages: 4,
     }
   },
   methods: {
-    updatePage(increment) {
-      this.current_page += increment;
-      this.fetchProjects();
+    updatePage(page) {
+      this.currentPage = page
+      this.fetchProjects()
     },
     fetchProjects() {
-      axios.get(this.url + this.api, { params: { page: this.current_page } })
+      axios.get(this.url + this.api, { params: { page: this.currentPage } })
         .then(response => {
-          this.projects = response.data.result.data;
-          this.last_page = response.data.result.last_page;
-        });
-    }
+          this.projects = response.data.result.data
+          this.totalPages = response.data.result.last_page
+        })
+    },
   },
   mounted() {
-    this.fetchProjects();
+    this.fetchProjects()
   }
 }
 </script>
