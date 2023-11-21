@@ -6,7 +6,7 @@
       
     <div class="card d-flex flex-row shadow-lg">
       <div class="col-md-4">
-        <img  :src="project.cover_image" alt="">
+        <img class="p-2"  :src="project.cover_image" alt="">
       </div>
           
       <div class="col-md-8 card-body">

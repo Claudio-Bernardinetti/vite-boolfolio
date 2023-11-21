@@ -4,7 +4,7 @@
       <div class="col" v-for="project in projects" :key="project.id">
         <router-link style="text-decoration: none;" :to="{ name: 'project', params: { id: project.id }}">
           <div class="card shadow-lg h-100">
-            <img :src="project.cover_image" alt="">
+            <img class="p-2" :src="project.cover_image" alt="">
             <div class="card_body h-100">
               <div class="card-text h-100 p-2">
                 <h5 class="card-title">Title: {{ project.title }}</h5>
