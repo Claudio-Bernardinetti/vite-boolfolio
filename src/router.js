@@ -12,7 +12,7 @@ import ContactsView from "./views/ContactsView.vue";
 // 2. Define some routes
 const routes = [
   { path: '/', component: HomeView },
-  { path: '/about', component: AboutView },
+  /* { path: '/about', component: AboutView }, */
   { path: '/projects', component: ProjectsView },
   { 
     path: '/project/:id', 

@@ -1,6 +1,5 @@
 <template>
   <div class="container py-4">
-    <h1>All Projects</h1>
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 py-4 g-2">
       <div class="col" v-for="project in projects" :key="project.id">
         <div class="card">
@@ -16,14 +15,14 @@
               <strong>Description:</strong> <br>
               {{ project.description }}
             </p>
-            <div class="card-footer">
+            <div class="card-footer m-0">
               <router-link class="btn btn-success my-2" :to="{ name: 'project', params: { id: project.id }}">View Project</router-link>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container p-0">
       <div class="pagination my-3">
         <nav aria-label="Page navigation">
           <ul class="pagination">

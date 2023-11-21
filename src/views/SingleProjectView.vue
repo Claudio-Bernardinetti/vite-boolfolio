@@ -1,7 +1,7 @@
 <template>
 
 
-  <div class="container">
+  <div class="container mt-4">
       <div class="cover_image">
         <!-- <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + project.cover_image" alt="" style="height: 400px;"> -->
       </div>
@@ -20,7 +20,10 @@
             <p class="card-text">
               <strong>Description:</strong> <br>
               {{ project.description }}
+              {{project.type_slug}}
             </p>
+            <ul >
+            </ul>
           </div>
       </div>
           <router-link to="/projects" class="btn btn-primary my-2">Go Back</router-link>

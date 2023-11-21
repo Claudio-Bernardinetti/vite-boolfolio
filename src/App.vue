@@ -8,7 +8,7 @@ export default {
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
       <div class="container">
         <a class="navbar-brand" href="#">Boolpress</a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -21,9 +21,9 @@ export default {
               <router-link class="nav-link active" to="/" aria-current="page">Home <span
                   class="visually-hidden">(current)</span></router-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link class="nav-link" to="/about">About</router-link>
-            </li>
+            </li> -->
 
             <li class="nav-item">
               <router-link class="nav-link" to="/projects">Projects</router-link>
