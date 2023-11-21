@@ -13,12 +13,14 @@
                 <a :href="project.internet_link" target="_blank">{{ project.internet_link }}</a> <br>
                 <strong>Description:</strong> <br>
                 <div> {{ project.description }} </div>
+                
               </div>
             </div>
           </div>
         </router-link>
       </div>
     </div>
+   
     <div class="container p-0">
       <div class="pagination my-3">
         <nav aria-label="Page navigation">

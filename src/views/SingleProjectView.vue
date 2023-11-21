@@ -21,8 +21,11 @@
           {{ project.description }}
           {{project.type_slug}}
         </p>
-        <ul>
+        <p class="my-3"><strong>Technology Used: </strong></p>
+        <ul v-if="project.technologies && project.technologies.length">
+          <li v-for="(technology, index) in project.technologies" :key="index">{{ technology.name }}</li>
         </ul>
+        <p v-else>Technology not selected</p>
       </div>
     </div>
     <router-link to="/projects" class="btn btn-primary my-2">Go Back</router-link>
