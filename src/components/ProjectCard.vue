@@ -1,25 +1,22 @@
 <template>
   <div class="container py-4">
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 py-4 g-2">
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 py-4 g-4">
       <div class="col" v-for="project in projects" :key="project.id">
-        <div class="card">
-          <img :src="project.cover_image" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Title: {{ project.title }}</h5>
-            <p class="card-text">
-              <strong>Links:</strong> <br>
-              {{ project.github_link }}<br>
-              {{ project.internet_link }}
-            </p>
-            <p class="card-text">
-              <strong>Description:</strong> <br>
-              {{ project.description }}
-            </p>
-            <div class="card-footer m-0">
-              <router-link class="btn btn-success my-2" :to="{ name: 'project', params: { id: project.id }}">View Project</router-link>
+        <router-link style="text-decoration: none;" :to="{ name: 'project', params: { id: project.id }}">
+          <div class="card shadow-lg h-100">
+            <img :src="project.cover_image" alt="">
+            <div class="card_body h-100">
+              <div class="card-text h-100 p-2">
+                <h5 class="card-title">Title: {{ project.title }}</h5>
+                <strong>Links:</strong> <br>
+                <a :href="project.github_link" target="_blank">{{ project.github_link }}</a> <br>
+                <a :href="project.internet_link" target="_blank">{{ project.internet_link }}</a> <br>
+                <strong>Description:</strong> <br>
+                <div> {{ project.description }} </div>
+              </div>
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
     <div class="container p-0">
@@ -79,4 +76,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+</style>

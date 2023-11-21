@@ -1,36 +1,32 @@
 <template>
-
-
-  <div class="container mt-4">
-      <div class="cover_image">
-        <!-- <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + project.cover_image" alt="" style="height: 400px;"> -->
-      </div>
+  <div class="container  my-5 ">
+    <div class="cover_image">
+      <!-- <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + project.cover_image" alt="" style="height: 400px;"> -->
+    </div>
       
-        <div class="card d-flex">
-          
-          <img width="300" :src="project.cover_image" alt="">
-          
-          <div class="card-body">
-            <h5 class="card-title">Title: {{ project.title }}</h5>
-            <p class="card-text">
-              <strong>Links:</strong> <br>
-              {{ project.github_link }}<br>
-              {{ project.internet_link }}
-            </p>
-            <p class="card-text">
-              <strong>Description:</strong> <br>
-              {{ project.description }}
-              {{project.type_slug}}
-            </p>
-            <ul >
-            </ul>
-          </div>
+    <div class="card d-flex flex-row shadow-lg">
+      <div class="col-md-4">
+        <img  :src="project.cover_image" alt="">
       </div>
-          <router-link to="/projects" class="btn btn-primary my-2">Go Back</router-link>
+          
+      <div class="col-md-8 card-body">
+        <h5 class="card-title">Title: {{ project.title }}</h5>
+        <p class="card-text">
+          <strong>Links:</strong> <br>
+          <a :href="project.github_link" target="_blank">{{ project.github_link }}</a> <br>
+              <a :href="project.internet_link" target="_blank">{{ project.internet_link }}</a> <br>
+        </p>
+        <p class="card-text">
+          <strong>Description:</strong> <br>
+          {{ project.description }}
+          {{project.type_slug}}
+        </p>
+        <ul>
+        </ul>
+      </div>
+    </div>
+    <router-link to="/projects" class="btn btn-primary my-2">Go Back</router-link>
   </div>
-      
-
-
 </template>
 
 <script>
