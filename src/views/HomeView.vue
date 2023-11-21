@@ -9,7 +9,7 @@
       </div>
       
       <section class="my-5">
-        <div class="container card p-0 ">
+        <div class="container shadow-lg card p-0 ">
           <div class="row">
             <div class="col">
               <img class="img-fluid p-2" src='https://picsum.photos/1200/600' alt='' />
@@ -44,19 +44,21 @@
           <h2 class="mb-4">Latest Projects</h2>
           <div class="row row-cols-1 row-cols-sm-3">
             <div class="col" v-for="project in projects" :key="project.id">
-              <div class="card shadow-lg h-100">
-                <img class="p-2" :src="project.cover_image" alt="">
-                <div class="card_body h-100">
-                  <div class="card-text h-100 p-2">
-                    <h5 class="card-title">Title: {{ project.title }}</h5>
-                    <strong>Links:</strong> <br>
-                    <a :href="project.github_link" target="_blank">{{ project.github_link }}</a> <br>
-                    <a :href="project.internet_link" target="_blank">{{ project.internet_link }}</a> <br>
-                    <strong>Description:</strong> <br>
-                    <div> {{ project.description }} </div>
+              <router-link style="text-decoration: none;" :to="{ name: 'project', params: { id: project.id }}">
+                <div class="card shadow-lg h-100">
+                  <img class="p-2" :src="project.cover_image" alt="">
+                  <div class="card_body h-100">
+                    <div class="card-text h-100 p-2">
+                      <h5 class="card-title">Title: {{ project.title }}</h5>
+                      <strong>Links:</strong> <br>
+                      <a :href="project.github_link" target="_blank">{{ project.github_link }}</a> <br>
+                      <a :href="project.internet_link" target="_blank">{{ project.internet_link }}</a> <br>
+                      <strong>Description:</strong> <br>
+                      <div> {{ project.description }} </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </router-link>
             </div>
           </div>
         </div>

@@ -1,12 +1,12 @@
 <template>
-  <div class="container  my-5 ">
+  <div class="container my-5">
     <div class="cover_image">
       <!-- <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + project.cover_image" alt="" style="height: 400px;"> -->
     </div>
       
-    <div class="card d-flex flex-row shadow-lg">
+    <div class="card d-flex flex-xl-row flex-column shadow-lg">
       <div class="col-md-4">
-        <img class="p-2"  :src="project.cover_image" alt="">
+        <img class="p-2" :src="project.cover_image" alt="">
       </div>
           
       <div class="col-md-8 card-body">
