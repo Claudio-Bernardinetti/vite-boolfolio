@@ -19,8 +19,8 @@
         <p class="card-text">
           <strong>Description:</strong> <br>
           {{ project.description }}
-          {{project.type_slug}}
         </p>
+        <p class="my-3"><strong>Project type: </strong>{{ project.type ? project.type.name : 'No Type' }}</p>
         <p class="my-3"><strong>Technology Used: </strong></p>
         <ul v-if="project.technologies && project.technologies.length">
           <li v-for="(technology, index) in project.technologies" :key="index">{{ technology.name }}</li>
