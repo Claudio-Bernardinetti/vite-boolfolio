@@ -1,5 +1,6 @@
 <template>
   <div class="container my-5">
+    <div v-if="!loading">
     <div class="cover_image">
       <!-- <img class="img-fluid object-fit-cover" :src="'http://127.0.0.1:8000/storage/' + project.cover_image" alt="" style="height: 400px;"> -->
     </div>
@@ -30,6 +31,11 @@
     </div>
     <router-link to="/projects" class="btn btn-primary my-2">Go Back</router-link>
   </div>
+  <div v-else>
+        loading...
+  </div>
+  </div>
+
 </template>
 
 <script>

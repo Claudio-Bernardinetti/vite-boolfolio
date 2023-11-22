@@ -1,6 +1,7 @@
 <script>
 export default {
   name: 'App',
+ 
 }
 
 
@@ -53,7 +54,7 @@ export default {
   <main class="">
 
     <router-view></router-view>
-
+    
   </main>
 
   <footer class="py-5 bg-dark text-light">

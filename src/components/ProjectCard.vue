@@ -21,27 +21,27 @@
       </div>
     </div>
    
-    <div class="container p-0">
-      <div class="pagination my-3">
-        <nav aria-label="Page navigation">
-          <ul class="pagination">
-            <li class="page-item" v-if="currentPage > 1">
-              <a class="page-link" href="#" @click.prevent="currentPage--; fetchProjects();" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
-              <a class="page-link" href="#" @click.prevent="currentPage = page; fetchProjects();">{{ page }}</a>
-            </li>
-            <li class="page-item" v-if="currentPage < totalPages">
-              <a class="page-link" href="#" @click.prevent="currentPage++; fetchProjects();" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group me-2" role="group" aria-label="First group">
+        <div class="btn-group" role="group" aria-label="Second group">
+          <button class="btn btn-dark border-black" @click="prevPage" :disabled="currentPage === 1">
+            <font color=white>&#9665;</font>
+          </button>
+          <button 
+            v-for="page in totalPages" 
+            :key="page" 
+            @click="updatePage(page)"
+            :class="{ 'btn-primary': currentPage === page, 'btn-dark border-black': currentPage !== page }" 
+            class="btn m-0">
+            {{ page }}
+          </button>
+          <button class="btn btn-dark border-black" @click="nextPage" :disabled="currentPage === totalPages">
+            <font color=white>&#9655;</font>
+          </button>
+        </div>
+        
+        </div>
       </div>
-    </div>
   </div>
 </template>
 
@@ -60,6 +60,16 @@ export default {
     }
   },
   methods: {
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.updatePage(this.currentPage - 1)
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.updatePage(this.currentPage + 1)
+      }
+    },
     updatePage(page) {
       this.currentPage = page
       this.fetchProjects()
