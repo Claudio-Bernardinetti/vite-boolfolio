@@ -9,23 +9,28 @@
       </div>
       
       <section class="my-5">
-        <div class="container shadow-lg card p-0 ">
+        <div class="container shadow-lg card p-2">
           <div class="row">
             <div class="col">
-              <img class="img-fluid p-2" src='https://picsum.photos/1200/600' alt='' />
+              <img width="300" class="img-fluid p-2" src='../../../src/assets/img/img-cv.jpg' alt='' />
             </div>
-            <div class="col p-2">
+            <div class="col-lg-9 p-2">
               <h3>Claudio Bernardinetti</h3>
               <p class="lead">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sed quas laborum saepe? Cupiditate quidem
-                molestias facere optio quos hic officiis totam, quis est dolores ab quo eligendi repellat repellendus!
+                Junior Full-Stack Web Developer
               </p>
 
               <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium amet et adipisci, error, consequatur
-                nobis neque debitis sequi expedita at autem, magni cum numquam officiis vel laboriosam saepe sed
-                repudiandae?
+                I am junior full stack developer trainee, looking for
+                new job challenge. Claudio is resilient, precise,
+                organized and flexible person, always ready to learn
+                new skills and adapt to the project needs. I have a
+                strong passion for web development and I enjoy
+                working in team and sharing my ideas.
               </p>
+              <p>Phone Number: 123456789</p>
+              <p>Email: example@gmail</p>
+              <p>Linkedin: example</p>
               <!-- <a href="#" class="btn btn-block btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-globe" viewBox="0 0 16 16">

@@ -11,7 +11,7 @@ export default {
   <header>
     <nav class="navbar navbar-expand-sm navbar-light bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="#">Boolpress</a>
+        <a class="navbar-brand" href="#">Portfolio</a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
           aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -59,31 +59,11 @@ export default {
 
   <footer class="py-5 bg-dark text-light">
     <div class="container py-5">
-      <div class="row">
-        <div class="col">
-          <h3>Lorem.</h3>
-          <ul class="list-unstyled">
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Lorem</a></li>
-          </ul>
-        </div>
-        <div class="col">
-          <h3>Deserunt?</h3>
-          <ul class="list-unstyled">
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Lorem</a></li>
-          </ul>
-        </div>
+      <div class="row ">
         <div class="col">
           <h3>Contacts</h3>
           <ul class="list-unstyled">
-            <li><a href="#">Phone numer</a></li>
+            <li><a href="#">Phone number</a></li>
             <li><a href="#">email</a></li>
             <li><a href="#">Linkedin</a></li>
           </ul>
