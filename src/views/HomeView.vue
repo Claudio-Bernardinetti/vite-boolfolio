@@ -1,37 +1,69 @@
+<script>
+import axios from "axios";
+export default {
+  name: "HomeView",
+  data() {
+    return {
+      base_url: "http://127.0.0.1:8000",
+      blog_api: "/api/projects/latest",
+      posts: null,
+    };
+  },
+  methods: {
+    getProjects() {
+      const url = this.base_url + this.blog_api;
+      axios
+        .get(url)
+        .then((response) => {
+          console.log(response);
+          this.projects = response.data.result;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
+  },
+  mounted() {
+    this.getProjects();
+  },
+};
+</script>
 <template>
   <div>
-      <div class="p-5 mb-4 bg-dark text-light">
-        <div class="container  py-3">
-          <h1 class="display-3 text-center fw-bold">Welcome!</h1>
-          <!-- <p class="col-md-8 fs-4">Find top news from top authors</p> -->
-          <!-- <button class="btn btn-primary btn-lg" type="button">Find out more</button> -->
-        </div>
+    <div class="p-5 mb-4 bg-dark text-light">
+      <div class="container py-3">
+        <h1 class="display-3 text-center fw-bold">Welcome!</h1>
+        <!-- <p class="col-md-8 fs-4">Find top news from top authors</p> -->
+        <!-- <button class="btn btn-primary btn-lg" type="button">Find out more</button> -->
       </div>
-      
-      <section class="my-5">
-        <div class="container shadow-lg card p-2">
-          <div class="row">
-            <div class="col">
-              <img width="300" class="img-fluid p-2" src='../../../src/assets/img/img-cv.jpg' alt='' />
-            </div>
-            <div class="col-lg-9 p-2">
-              <h3>Claudio Bernardinetti</h3>
-              <p class="lead">
-                Junior Full-Stack Web Developer
-              </p>
+    </div>
 
-              <p>
-                I am junior full stack developer trainee, looking for
-                new job challenge. Claudio is resilient, precise,
-                organized and flexible person, always ready to learn
-                new skills and adapt to the project needs. I have a
-                strong passion for web development and I enjoy
-                working in team and sharing my ideas.
-              </p>
-              <p>Phone Number: 123456789</p>
-              <p>Email: example@gmail</p>
-              <p>Linkedin: example</p>
-              <!-- <a href="#" class="btn btn-block btn-primary">
+    <section class="my-5">
+      <div class="container shadow-lg card p-2">
+        <div class="row">
+          <div class="col">
+            <img
+              width="300"
+              class="img-fluid p-2"
+              src="../../../src/assets/img/img-cv.jpg"
+              alt=""
+            />
+          </div>
+          <div class="col-lg-9 p-2">
+            <h3>Claudio Bernardinetti</h3>
+            <p class="lead">Junior Full-Stack Web Developer</p>
+
+            <p>
+              I am junior full stack developer trainee, looking for new job
+              challenge. Claudio is resilient, precise, organized and flexible
+              person, always ready to learn new skills and adapt to the project
+              needs. I have a strong passion for web development and I enjoy
+              working in team and sharing my ideas.
+            </p>
+            <p>Phone Number: 123456789</p>
+            <p>Email: example@gmail</p>
+            <p>Linkedin: example</p>
+            <!-- <a href="#" class="btn btn-block btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-globe" viewBox="0 0 16 16">
                   <path
@@ -39,38 +71,46 @@
                 </svg>
                 Find us
               </a> -->
-            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section v-if="projects">
-        <div class="container pb-5">
-          <h2 class="mb-4">Latest Projects</h2>
-          <div class="row row-cols-1 row-cols-sm-3">
-            <div class="col" v-for="project in projects" :key="project.id">
-              <router-link style="text-decoration: none;" :to="{ name: 'project', params: { id: project.id }}">
-                <div class="card shadow-lg h-100">
-                  <img class="p-2" :src="project.cover_image" alt="">
-                  <div class="card_body h-100">
-                    <div class="card-text h-100 p-2">
-                      <h5 class="card-title">Title: {{ project.title }}</h5>
-                      <strong>Links:</strong> <br>
-                      <a :href="project.github_link" target="_blank">{{ project.github_link }}</a> <br>
-                      <a :href="project.internet_link" target="_blank">{{ project.internet_link }}</a> <br>
-                      <strong>Description:</strong> <br>
-                      <div> {{ project.description }} </div>
-                    </div>
+    <section v-if="projects">
+      <div class="container pb-5">
+        <h2 class="mb-4">Latest Projects</h2>
+        <div class="row row-cols-1 row-cols-sm-3">
+          <div class="col" v-for="project in projects" :key="project.id">
+            <router-link
+              style="text-decoration: none"
+              :to="{ name: 'project', params: { id: project.id } }"
+            >
+              <div class="card shadow-lg h-100">
+                <img class="p-2" :src="project.cover_image" alt="" />
+                <div class="card_body h-100">
+                  <div class="card-text h-100 p-2">
+                    <h5 class="card-title">Title: {{ project.title }}</h5>
+                    <strong>Links:</strong> <br />
+                    <a :href="project.github_link" target="_blank">{{
+                      project.github_link
+                    }}</a>
+                    <br />
+                    <a :href="project.internet_link" target="_blank">{{
+                      project.internet_link
+                    }}</a>
+                    <br />
+                    <strong>Description:</strong> <br />
+                    <div>{{ project.description }}</div>
                   </div>
                 </div>
-              </router-link>
-            </div>
+              </div>
+            </router-link>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-
-      <!-- <div class="newsletter py-5 mt-5 bg-light text-dark">
+    <!-- <div class="newsletter py-5 mt-5 bg-light text-dark">
        <div class="container">
          <h4 class="mb-3">Contact me</h4>
           <form action="">
@@ -85,42 +125,7 @@
           </form>
        </div>
       </div> -->
-
-
   </div>
 </template>
-
-<script>
-import axios from 'axios';
-export default {
-  name: 'HomeView',
-  data() {
-    return {
-      base_url: 'http://127.0.0.1:8000',
-      blog_api: '/api/projects/latest',
-      posts: null,
-
-    }
-  },
-  methods: {
-    getProjects() {
-      const url = this.base_url + this.blog_api;
-      axios
-        .get(url)
-        .then(response => {
-          console.log(response);
-          this.projects = response.data.result
-
-        })
-        .catch(err => {
-          console.error(err);
-        })
-    }
-  },
-  mounted() {
-    this.getProjects();
-  }
-}
-</script>
 
 <style lang="scss" scoped></style>
