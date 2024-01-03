@@ -67,8 +67,8 @@ export default {
                   project.internet_link
                 }}</a>
                 <br />
-                <strong>Description:</strong> <br />
-                <div>{{ project.description }}</div>
+                <!-- <strong>Description:</strong> <br />
+                <div>{{ project.description }}</div> -->
               </div>
             </div>
           </div>

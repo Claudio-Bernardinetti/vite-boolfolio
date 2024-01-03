@@ -31,13 +31,13 @@ const routes = [
   },
 
   {
-    path: "/technologies/:slug",
+    path: "/technologies/:id",
     name: "technology",
     component: TechnologyView,
   },
 
   {
-    path: "/types/:slug",
+    path: "/types/:id",
     name: "type",
     component: TypeView,
   },

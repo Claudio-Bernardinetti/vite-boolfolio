@@ -12,7 +12,29 @@ export default {
       state,
       types: null,
       technologies: null,
+      selectedTypes: [],
+      selectedTechnologies: [],
     };
+  },
+  methods: {
+    filterByType() {
+      const types = this.selectedTypes.join(",");
+      this.$router.push({ name: "type", params: { id: types } });
+    },
+    filterByTechnology() {
+      const technologies = this.selectedTechnologies.join(",");
+      this.$router.push({ name: "technology", params: { id: technologies } });
+    },
+    deselectAllTypes() {
+      this.selectedTypes = [];
+      // Ripristina i progetti originali quando non ci sono filtri
+      this.state.projects = this.state.originalProjects;
+    },
+    deselectAllTechnologies() {
+      this.selectedTechnologies = [];
+      // Ripristina i progetti originali quando non ci sono filtri
+      this.state.projects = this.state.originalProjects;
+    },
   },
   mounted() {
     const url = this.state.base_url + "/api/types";
@@ -61,37 +83,49 @@ export default {
         <div class="widget card bg-light mb-3" v-if="types">
           <div class="card-header">Types</div>
 
-          <div class="card-body">
+          <div class="card-body bg-white shadow-lg">
             <ul class="list-unstyled">
-              <li v-for="type in types" :key="type.slug">
-                <router-link
-                  :to="{
-                    name: 'type',
-                    params: { slug: type.slug },
-                  }"
-                >
-                  {{ type.name }}
-                </router-link>
+              <li v-for="type in types" :key="type.id">
+                <input
+                  type="checkbox"
+                  :id="type.id"
+                  v-model="selectedTypes"
+                  :value="type.id"
+                />
+                <label class="p-1" :for="type.id">{{ type.name }}</label>
               </li>
             </ul>
+            <button @click="filterByType" class="btn btn-primary m-1">
+              Filter by Type
+            </button>
+            <button @click="deselectAllTypes" class="btn btn-danger m-1">
+              Unfilter
+            </button>
           </div>
         </div>
         <div class="widget card bg-light mb-3" v-if="technologies">
           <div class="card-header">Technologies</div>
 
-          <div class="card-body">
+          <div class="card-body bg-white shadow-lg">
             <ul class="list-unstyled">
-              <li v-for="technology in technologies" :key="technology.slug">
-                <router-link
-                  :to="{
-                    name: 'technology',
-                    params: { slug: technology.slug }, // corretto qui
-                  }"
-                >
-                  {{ technology.name }}
-                </router-link>
+              <li v-for="technology in technologies" :key="technology.id">
+                <input
+                  type="checkbox"
+                  :id="technology.id"
+                  v-model="selectedTechnologies"
+                  :value="technology.id"
+                />
+                <label class="p-1" :for="technology.id">{{
+                  technology.name
+                }}</label>
               </li>
             </ul>
+            <button @click="filterByTechnology" class="btn btn-primary m-1">
+              Filter by Technology
+            </button>
+            <button @click="deselectAllTechnologies" class="btn btn-danger m-1">
+              Unfilter
+            </button>
           </div>
         </div>
       </aside>

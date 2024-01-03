@@ -13,10 +13,11 @@ export default {
       state,
       loading: true,
       technology: null,
+      project: {},
     };
   },
   mounted() {
-    const url = `${this.state.base_url}/api/technologies/${this.$route.params.slug}`;
+    const url = `${this.state.base_url}/api/technologies/${this.$route.params.id}`;
     axios
       .get(url)
       .then((resp) => {
@@ -43,25 +44,70 @@ export default {
 </script>
 
 <template>
-  <div>
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container py-5">
-        <h1 class="display-5 fw-bold">{{ $route.params.slug }} Archive</h1>
-      </div>
-    </div>
+  <section v-if="project">
+    <div class="container">
+      <div class="row">
+        <div class="container container_single_project my-5">
+          <div v-if="!loading">
+            <div v-for="project in technology.projects" :key="project.id">
+              <div
+                class="card-body shadow-sm rounded-2 border border-black mb-3"
+              >
+                <div class="d-flex flex-row">
+                  <div class="p-2">
+                    <img :src="project.cover_image" alt="" />
+                  </div>
 
-    <section v-if="technology">
-      <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-          <project-card
-            :project="project"
-            v-for="project in technology.data"
-          ></project-card>
+                  <div class="p-2">
+                    <h5 class="card-title">Title: {{ project.title }}</h5>
+                    <p class="card-text">
+                      <strong>Links:</strong> <br />
+                      <a :href="project.github_link" target="_blank">{{
+                        project.github_link
+                      }}</a>
+                      <br />
+                      <a :href="project.internet_link" target="_blank">{{
+                        project.internet_link
+                      }}</a>
+                      <br />
+                    </p>
+                    <p class="card-text">
+                      <strong>Description:</strong> <br />
+                      {{ project.description }}
+                    </p>
+                    <p class="my-3">
+                      <strong>Project type: </strong
+                      >{{ project.type ? project.type.name : "No Type" }}
+                    </p>
+                    <p class="my-3"><strong>Technology Used: </strong></p>
+                    <ul
+                      v-if="project.technologies && project.technologies.length"
+                    >
+                      <li
+                        v-for="(technology, index) in project.technologies"
+                        :key="index"
+                      >
+                        {{ technology.name }}
+                      </li>
+                    </ul>
+                    <p v-else>Technology not selected</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <router-link to="/projects" class="btn btn-primary my-2"
+              >Go Back</router-link
+            >
+          </div>
+          <div v-else class="text-center display-6">loading...</div>
         </div>
       </div>
-      <li></li>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container_single_project {
+  min-height: 500px;
+}
+</style>

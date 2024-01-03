@@ -44,8 +44,8 @@ export default {
           <div class="col">
             <img
               width="300"
-              class="img-fluid p-2"
-              src="../../../src/assets/img/img-cv.jpg"
+              class="img-fluid rounded-2 border border-dark"
+              src="../../../src/assets/img/img-cv.png"
               alt=""
             />
           </div>
@@ -77,7 +77,7 @@ export default {
     </section>
 
     <section v-if="projects">
-      <div class="container pb-5">
+      <div class="container pb-5 gap-0">
         <h2 class="mb-4">Latest Projects</h2>
         <div class="row row-cols-1 row-cols-sm-3">
           <div class="col" v-for="project in projects" :key="project.id">
